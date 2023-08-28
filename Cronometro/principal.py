@@ -1,7 +1,12 @@
 from cronometro import Cronometro
+import msvcrt  # Librería para detectar la pulsación de teclas en Windows
 
-c=Cronometro()
+c = Cronometro()
 
-for i in range(300):
-    print(c.hora.valor,(':'), c.minuto.valor,(':'), c.segundo.valor)
+while True:
+    print(c.hora.valor, ':', c.minuto.valor, ':', c.segundo.valor)
     c.avanzar()
+
+    if msvcrt.kbhit() and msvcrt.getch() == b'\r':
+        break
+
